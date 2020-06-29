@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>聊天机器人</title>
+    </head>
+
+    <body>
+        <p>say something <input type="text" id="msg"></p>
+
+        <button onclick="getRobot()">Send</button>
+
+        <p id="robotReply"></p>
+
+        <script>
+            
+            let msg = document.getElementById("msg");
+            let reply = document.getElementById("robotReply");
+
+            function getRobot(){
+                fetch('http://www.xhxly.cn:8080/api.php?key=free&appid=0&msg=' + msg.nodeValue)
+                .then(res => res.json())
+                .then(data => reply.innerHTML = data.content)
+            }
+            
+        </script>
+    </body>
+</html>
